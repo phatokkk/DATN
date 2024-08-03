@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+<body>
+	<main class="container-fluid">
+		
+
+		
+		<div class="row mb-3 a">
+			<a th:href="@{/dgd-toshiba}">
+				<div class="box-quicklink__item">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYJ8jkzAEGVol0rwwJ6CBCZhDqU5JU-WpkxA&s"
+						width="100" class="no-text">
+				</div>
+			</a>
+			<a th:href="@{/dgd-panasonic}">
+				<div class="box-quicklink__item">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjttCUKaXY8nirMYcb77dxeXxWd64rsWZcBg&s"
+						width="100" class="no-text">
+				</div>
+			</a>
+			<a th:href="@{/dgd-lg}">
+				<div class="box-quicklink__item">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc8fnl1Owtb3eU3QRGoTXgBWkXT0s_TTi4XQ&s"
+						width="100" class="no-text">
+				</div>
+			</a>
+			<a th:href="@{/dgd-senko}">
+				<div class="box-quicklink__item">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwmL5lS_ToAprCUJ8bTgE-xCxYWdcG42CIoA&s"
+						width="100" class="no-text">
+				</div>
+			</a>
+			<a th:href="@{/dgd-samsum}">
+				<div class="box-quicklink__item">
+					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Samsung_wordmark.svg/1200px-Samsung_wordmark.svg.png"
+						width="100" class="no-text">
+				</div>
+			</a>
+			<a th:href="@{/dgd-tefal}">
+				<div class="box-quicklink__item">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRV0fB_7wU8Puyd4LW0pGQXnOp2uOQX3LylQ&s"
+						width="100" class="no-text">
+				</div>
+			</a>
+			<a th:href="@{/dgd-beplephan}">
+				<div class="box-quicklink__item">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLxsFvrecKkmHwLErem5Q_mOHkB49YQpyRmw&s"
+						width="100" class="no-text">
+				</div>
+			</a>
+		</div>
+		<label for="">Chọn đồ gia dụng theo nhu cầu:</label>
+		<div class="row a mb-2">
+			<a th:href="@{/brand-vn}">
+				<div class="box-quicklink__item">
+					Thương hiệu Việt Nam
+				</div>
+			</a>
+			<a th:href="@{/brand-japan}">
+				<div class="box-quicklink__item">
+					Thương hiệu Nhật Bản
+				</div>
+			</a>
+		</div>
+		<div class="center">
+			<p>Tổng: <b>[[${totalItems}]] sản phẩm</b></p>
+			<label class="center-fl">
+				<input type="checkbox" name="" id="" class="tick-checkbox">
+				<img src="//cdn.tgdd.vn/mwgcart/mwgcore/ContentMwg/images/icon-thunder.png"
+					style="width: 11px;margin-right: 5px;">Giao nhanh</label>
+			<label class="center"><input type="checkbox" name="" id="" class="tick-checkbox">Giảm giá</label>
+			<label class="center"><input type="checkbox" name="" id="" class="tick-checkbox">Góp 0% - 1%</label>
+			<label class="center"><input type="checkbox" name="" id="" class="tick-checkbox">Độc quyền</label>
+			<label class="center"><input type="checkbox" name="" id="" class="tick-checkbox">Mới</label>
+			<a th:href="@{/price-sale-flash}">
+				<button type="button" id="btn_search" class="btn btn-secondary mb-2 ml-5">
+					Siêu giảm giá
+				</button>
+			</a>
+
+			<a th:href="@{/product/list/hotsale}">
+				<button type="button" id="btn_search" class="btn btn-secondary mb-2 ml-3">
+					Các sản phẩm hot!
+				</button>
+			</a>
+			<div class="click-sort mb-2">
+				<div class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Xếp theo:
+					Nổi bật</div>
+				<div class="dropdown-menu mt-3">
+					<a class="dropdown-item" id="dd--item1" th:href="@{/product/list/hotsale}">
+						<i class="fa-solid fa-check"></i> Nổi bật</a>
+					<a class="dropdown-item" id="dd--item1" th:href="@{/price-giam}">
+						% Giảm</a>
+					<a class="dropdown-item" id="dd--item1" th:href="@{/price-cao-den-thap}">
+						Giá cao đến thấp</a>
+					<a class="dropdown-item" id="dd--item1" th:href="@{/price-thap-den-cao}">
+						Giá thấp đến cao</a>
+				</div>
+			</div>
+		</div>
+		<!-- **************************************** -->
+		<div class="row" th:if="${!productPage.hasContent()}">
+			<div class="col mt-2 no-result">
+				<img src="/assets/images/No_r.png" alt=""><br>
+				<h5>Không tìm thấy kết quả nào</h5>
+				<h4 style="color: #938484;">Hãy thử sử dụng các từ khóa chung chung hơn</h4>
+			</div>
+		</div>
+		<div class="row ml-2">
+			<div th:each="item: ${productPage}" class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+				<div class="card">
+					<div class="card-body list-item">
+						<div class="gif">
+							<img th:src="@{|/assets/images/${item.hotSale}|}"
+								th:attr="style=${item.hotSale == 'pngegg.png' ? 'opacity: 0' : ''}" />
+						</div>
+						<a th:href="@{|/product/detail/${item.productId}|}">
+							<img class="imgindex" th:src="@{|/assets/images/${item.image1}|}">
+						</a>
+					</div>
+					<div class="card-footer">
+						<a th:href="@{|/product/detail/${item.productId}|}" class="card-title">[(${item.name})]</a>
+						<div class="card-bottom">
+							<div>
+								<span class="price">[[${#numbers.formatInteger(item.unitPrice, 0,
+									'POINT')}]] <sup>đ</sup>
+								</span>
+							</div>
+							<div class="card-price">
+								<span class="old_price">[[${#numbers.formatInteger(item.oldPrice, 0,
+									'POINT')}]] <sup>đ</sup>
+								</span>
+								<span class="discount">- [[${item.discount}]]%</span>
+							</div>
+						</div>
+						<div class="card-bot">
+							<div>
+								<img th:src="|/assets/images/${item.image5}|">
+							</div>
+							<div>
+								<a th:attr="ng-click=@{|cart.add(${item.productId})|}">
+									<i class="fa-solid fa-cart-shopping cart-shopping"></i></a>
+								<a th:href="@{|/favorite/save/${item.productId}|}">
+									<i class="fa-regular fa-thumbs-up cart-like"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="page__navigation">
+			<div class="text-muted mt-3 mb-3">
+				<div aria-label="Page navigation" th:if="${productPage.totalPages > 0}">
+					<ul class="pagination justify-content-center">
+						<li th:class="${1 == productPage.number + 1} ? 'page-item active' : 'page-item'">
+							<a th:href="@{/(name=${name}, size=${productPage.size}, page=${1})}" class="page-link">Trang
+								đầu</a>
+						</li>
+
+						<li class="page-item active" th:each="pageNumber : ${pageNumbers}"
+							th:if="${productPage.totalPages > 1}"
+							th:class="${pageNumber == productPage.number + 1} ? 'page-item active' : 'page-item'">
+							<a th:href="@{/(name=${name}, size=${productPage.size}, page=${pageNumber})}"
+								class="page-link" th:text="${pageNumber}"></a>
+						</li>
+
+						<li
+							th:class="${productPage.totalPages == productPage.number + 1} ? 'page-item active' : 'page-item'">
+							<a th:href="@{/(name=${name}, size=${productPage.size}, page=${productPage.totalPages})}"
+								class="page-link">Trang cuối</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>
